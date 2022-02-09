@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dots Menu</title>
+</head>
+<!--#region STYLE -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #10131c;
+    }
+    section::before{
+    content:'';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(#ffc107,#e91e63);
+    border-radius: 50%;
+    transform: translate(-550px,-620px);
+    z-index: -100;
+    }
+    section::after{
+        content:'';
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(#42f575,#f5c242);
+        border-radius: 50%;
+        transform: translate(150px,-300px);
+        z-index: -100;
+    }
+    .bg::before{
+        content:'';
+        position: absolute;
+        width: 1000px;
+        height: 1000px;
+        background: linear-gradient(#e942f5,#42d7f5);
+        border-radius: 50%;
+        transform: translate(200px,500px);
+        z-index: -100;
+    }
+    .bg::after{
+        content:'';
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: linear-gradient(#f58a42,#42ecf5);
+        border-radius: 50%;
+        transform: translate(-500px,100px);
+        z-index: -100;
+    }
+</style>
+<!--#region DROP FX -->
+<style>
+    .navigation{
+        position: relative;
+        width: 70px;
+        height: 70px;
+        background: rgba(255,255,255,0.1);
+        box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+        border: 1px solid rgba(255,255,255,0.5);
+        border-right: 1px solid rgba(255,255,255,0.2);
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        transition-delay: 0.8s;
+    }
+    .navigation.active{
+        width: 300px;
+        height: 300px;
+        transition-delay: 0s;
+    }
+    .navigation span{
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff;
+        border-radius: 50%;
+        transform: translate(calc(12px * var(--x)),calc(12px * var(--y)));
+        transition: transform 0.5s, width 0.5s, height 0.5s, background 0.5s;
+        transition-delay: calc(0.1s * var(--i));
+    }
+    .navigation.active span{
+        width: 45px;
+        height:45px;
+        background: rgba(0,0,0,0.5);
+        box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+        border: 1px solid rgba(255,255,255,0.5);
+        border-right: 1px solid rgba(255,255,255,0.2);
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        transform: translate(calc(60px * var(--x)),calc(60px * var(--y)));
+        
+    }
+    .navigation span ion-icon{
+        transition: 0.5s;
+        font-size: 0em;
+    }
+    .navigation.active span ion-icon{
+        font-size: 1.35em;
+        color: #fff;
+    }
+    .navigation.active span:hover ion-icon{
+        color: #24c8ff;
+        filter: drop-shadow(0 0 2px #f542e6) drop-shadow(0 0 2px #24c8ff) drop-shadow(0 0 15px #24c8ff);
+    }
+</style>
+
+<!--#endregion--><!--#endregion-->
+<!--#region BODY-->
+    <body class="bg">
+        <section>
+            <div class="navigation" >
+                <span style="--i:0;--x:-1;--y:0;"><ion-icon name="camera"></ion-icon></span>
+                <span style="--i:1;--x:1;--y:0;"><ion-icon name="disc"></ion-icon></span>
+                <span style="--i:2;--x:0;--y:-1;"><ion-icon name="alarm"></ion-icon></ion-icon></span>
+                <span style="--i:3;--x:0;--y:1;"><ion-icon name="logo-game-controller-b"></ion-icon></span>
+                <span style="--i:4;--x:1;--y:1;"><ion-icon name="moon"></ion-icon></span>
+                <span style="--i:5;--x:-1;--y:-1;"><ion-icon name="notifications-outline"></ion-icon></span>
+                <span style="--i:6;--x:0;--y:0;"><ion-icon name="rainy"></ion-icon></span>
+                <span style="--i:7;--x:-1;--y:1;"><ion-icon name="stopwatch"></ion-icon></span>
+                <span style="--i:8;--x:1;--y:-1;"><ion-icon name="chatbubbles"></ion-icon></span>
+            </div>
+        </section>
+    </body>
+<!--#endregion-->
+
+<!--#REGION SCRIPTS-->
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+<script>
+    let navigation = document.querySelector('.navigation');
+    navigation.onclick = function(){
+        navigation.classList.toggle('active');
+    }
+</script>
+<!--#endregion-->
+</html>
